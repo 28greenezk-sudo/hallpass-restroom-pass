@@ -1,0 +1,569 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", sans-serif;
+  color: #202b27;
+  background: #f4f7f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --green: #39785f;
+  --green-dark: #285c47;
+  --green-light: #e9f3ed;
+  --muted: #75817b;
+  --line: #e8ece9;
+  --white: #fff;
+  --shadow: 0 16px 50px rgb(38 61 49 / 7%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.topbar {
+  height: 70px;
+  padding: 0 max(28px, calc((100vw - 1040px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #edf0ee;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #26342d;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 17px;
+}
+
+.school-label {
+  color: #77827c;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.app-shell {
+  width: min(100% - 40px, 620px);
+  margin: 0 auto;
+  padding: 54px 0 30px;
+}
+
+.intro {
+  margin-bottom: 27px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 11px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: "Segoe UI", sans-serif;
+}
+
+h1 {
+  margin-bottom: 11px;
+  font-size: clamp(29px, 5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1.8px;
+  line-height: 1.17;
+}
+
+h1 span {
+  color: var(--green);
+}
+
+.intro-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.view-switch {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 17px;
+  padding: 5px;
+  display: flex;
+  gap: 3px;
+  border: 1px solid #e9eeeb;
+  border-radius: 13px;
+  background: #edf1ee;
+}
+
+.view-tab {
+  min-width: 129px;
+  height: 39px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #748078;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.view-tab.is-active {
+  background: #fff;
+  color: #2d5944;
+  box-shadow: 0 2px 7px rgb(32 55 41 / 8%);
+}
+
+.tab-count {
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #eaf2ed;
+  color: var(--green-dark);
+  font-size: 10px;
+}
+
+.notice {
+  min-height: 0;
+  margin: 0;
+  color: #a34435;
+  font-size: 13px;
+  text-align: center;
+}
+
+.notice:not(:empty) {
+  margin-bottom: 12px;
+}
+
+.panel {
+  padding: 28px;
+  border: 1px solid #edf0ee;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.panel-heading {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-heading .eyebrow,
+.teacher-heading .eyebrow {
+  margin-bottom: 6px;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.65px;
+}
+
+.avatar {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d9e9df;
+  border-radius: 50%;
+  background: #edf5f0;
+  color: var(--green-dark);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.field-label {
+  margin-bottom: 8px;
+  display: block;
+  color: #65716b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.student-select {
+  width: 100%;
+  height: 45px;
+  padding: 0 12px;
+  border: 1px solid #e3e9e5;
+  border-radius: 9px;
+  outline-color: #8cb79e;
+  background: #fff;
+  color: #2d3932;
+  font-size: 14px;
+}
+
+.student-status {
+  margin-top: 19px;
+}
+
+.status-box {
+  min-height: 123px;
+  padding: 19px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid #e7eee9;
+  border-radius: 12px;
+  background: #f8faf8;
+}
+
+.status-box.status-out {
+  border-color: #e9e3ce;
+  background: #fbfaf6;
+}
+
+.status-box.status-pending {
+  border-color: #ebe5cf;
+  background: #fcfbf6;
+}
+
+.status-box.status-denied {
+  border-color: #efdfdb;
+  background: #fdf8f7;
+}
+
+.status-title {
+  margin-bottom: 5px;
+  color: #2f3d35;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-description {
+  margin-bottom: 0;
+  color: #78837d;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.button {
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 650;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.button:hover {
+  background: var(--green-dark);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:focus-visible,
+.view-tab:focus-visible,
+.student-select:focus-visible {
+  outline: 3px solid #a7ceb4;
+  outline-offset: 2px;
+}
+
+.status-box .button {
+  margin-top: 14px;
+}
+
+.button-secondary {
+  border: 1px solid #dce7df;
+  background: #fff;
+  color: #345e46;
+}
+
+.button-secondary:hover {
+  background: #f0f6f2;
+}
+
+.button-danger {
+  border: 1px solid #edd9d5;
+  background: #fff;
+  color: #a14e41;
+}
+
+.button-danger:hover {
+  background: #fbefed;
+}
+
+.privacy-note {
+  margin: 15px 0 0;
+  color: #8a958e;
+  font-size: 11px;
+  text-align: center;
+}
+
+.privacy-note span {
+  margin-right: 4px;
+}
+
+.teacher-heading {
+  margin: 0 1px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.live-label {
+  padding: 7px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e3ede6;
+  border-radius: 20px;
+  background: #f8fbf9;
+  color: #587565;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.live-label span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4b9b6e;
+}
+
+.teacher-stats {
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat-card {
+  padding: 15px 12px;
+  border: 1px solid #edf0ee;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.stat-number {
+  margin-bottom: 3px;
+  display: block;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+}
+
+.stat-label {
+  color: #818c85;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.request-section {
+  margin-bottom: 22px;
+}
+
+.section-heading {
+  margin: 0 1px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-heading h3 {
+  margin-bottom: 0;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: -0.3px;
+}
+
+.section-heading > span {
+  color: #8a958e;
+  font-size: 11px;
+}
+
+.request-card,
+.empty-state {
+  padding: 16px;
+  border: 1px solid #e9eeeb;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.request-card + .request-card,
+.history-item + .history-item {
+  margin-top: 8px;
+}
+
+.request-top,
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.student-name {
+  margin-bottom: 4px;
+  color: #2c3931;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.request-meta {
+  margin-bottom: 0;
+  color: #87918b;
+  font-size: 11px;
+}
+
+.request-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.request-actions .button {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 12px;
+}
+
+.empty-state {
+  padding: 20px;
+  color: #849087;
+  font-size: 12px;
+  text-align: center;
+}
+
+.history-item {
+  padding: 12px 14px;
+  border: 1px solid #edf0ee;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.history-item .student-name {
+  margin-bottom: 0;
+}
+
+.activity-state {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 20px;
+  background: #edf4ef;
+  color: #50745d;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.activity-state.is-out {
+  background: #f6f1df;
+  color: #8a7135;
+}
+
+.activity-state.is-denied {
+  background: #f9ece9;
+  color: #a14e41;
+}
+
+.history-section {
+  margin-bottom: 0;
+}
+
+.app-footer {
+  margin-top: 31px;
+  display: flex;
+  justify-content: space-between;
+  color: #9aa39d;
+  font-size: 10px;
+}
+
+.app-footer span:first-child {
+  font-weight: 700;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    height: 60px;
+    padding: 0 19px;
+  }
+
+  .school-label {
+    font-size: 11px;
+  }
+
+  .app-shell {
+    width: min(100% - 30px, 620px);
+    padding-top: 38px;
+  }
+
+  .panel {
+    padding: 22px 19px;
+  }
+
+  .teacher-stats {
+    gap: 7px;
+  }
+
+  .stat-card {
+    padding: 12px 9px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+  }
+
+  .app-footer {
+    gap: 12px;
+  }
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7f5">
+    <title>Hallpass | Restroom Pass</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Hallpass home">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>hallpass</span>
+      </a>
+      <span class="school-label">Lincoln Middle School</span>
+    </header>
+
+    <main class="app-shell">
+      <section class="intro">
+        <p class="eyebrow">CLASSROOM RESTROOM PASS</p>
+        <h1>Out and back, <span>all in one place.</span></h1>
+        <p class="intro-copy">Request a pass, get teacher approval, and check back in when you return.</p>
+      </section>
+
+      <nav class="view-switch" aria-label="Choose a view">
+        <button class="view-tab is-active" id="student-tab" type="button" aria-pressed="true">
+          <span aria-hidden="true">♧</span> Student
+        </button>
+        <button class="view-tab" id="teacher-tab" type="button" aria-pressed="false">
+          <span aria-hidden="true">▤</span> Teacher
+          <span class="tab-count" id="pending-count" hidden>0</span>
+        </button>
+      </nav>
+
+      <p class="notice" id="notice" role="status" aria-live="polite"></p>
+
+      <section id="student-view" aria-labelledby="student-heading">
+        <div class="panel student-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">STUDENT PORTAL</p>
+              <h2 id="student-heading">Your restroom pass</h2>
+            </div>
+            <span class="avatar" id="student-avatar" aria-hidden="true">A</span>
+          </div>
+
+          <label class="field-label" for="student-select">Student</label>
+          <select id="student-select" class="student-select">
+            <option value="maya">Maya Chen</option>
+            <option value="jordan">Jordan Lee</option>
+            <option value="sam">Sam Rivera</option>
+          </select>
+
+          <div id="student-status" class="student-status"></div>
+        </div>
+        <p class="privacy-note"><span aria-hidden="true">◷</span> Your teacher will see your request and pass status.</p>
+      </section>
+
+      <section id="teacher-view" aria-labelledby="teacher-heading" hidden>
+        <div class="teacher-heading">
+          <div>
+            <p class="eyebrow">TEACHER DASHBOARD</p>
+            <h2 id="teacher-heading">Pass activity</h2>
+          </div>
+          <span class="live-label"><span aria-hidden="true"></span> Live</span>
+        </div>
+        <div class="teacher-stats" id="teacher-stats"></div>
+        <div class="request-section">
+          <div class="section-heading">
+            <h3>Needs your attention</h3>
+            <span id="requests-label"></span>
+          </div>
+          <div id="teacher-requests"></div>
+        </div>
+        <div class="request-section history-section">
+          <div class="section-heading">
+            <h3>Today’s activity</h3>
+          </div>
+          <div id="teacher-history"></div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>Hallpass</span>
+        <span>Simple check-ins for a smoother school day</span>
+      </footer>
+    </main>
+  </body>
+</html>
