@@ -6,6 +6,7 @@ const students = {
 
 const storageKey = "hallpass-restroom-passes";
 const initialState = { passes: [] };
+const validStatuses = new Set(["pending", "out", "returned", "denied"]);
 const studentSelect = document.querySelector("#student-select");
 const studentStatus = document.querySelector("#student-status");
 const studentAvatar = document.querySelector("#student-avatar");
@@ -15,18 +16,53 @@ const studentView = document.querySelector("#student-view");
 const teacherView = document.querySelector("#teacher-view");
 const notice = document.querySelector("#notice");
 
+let stateReady = true;
+
+function isValidTimestamp(value) {
+  return typeof value === "string" && Number.isFinite(Date.parse(value));
+}
+
+function isValidPass(pass) {
+  if (
+    !pass ||
+    typeof pass !== "object" ||
+    typeof pass.id !== "string" ||
+    !Object.hasOwn(students, pass.studentId) ||
+    !validStatuses.has(pass.status) ||
+    !isValidTimestamp(pass.requestedAt)
+  ) {
+    return false;
+  }
+
+  if (pass.status === "out" || pass.status === "returned") {
+    return (
+      isValidTimestamp(pass.approvedAt) &&
+      (pass.status !== "returned" || isValidTimestamp(pass.returnedAt))
+    );
+  }
+  if (pass.status === "denied") {
+    return isValidTimestamp(pass.deniedAt);
+  }
+  return true;
+}
+
 function loadState() {
   try {
     const saved = localStorage.getItem(storageKey);
-    if (!saved) return initialState;
+    if (!saved) {
+      stateReady = true;
+      return initialState;
+    }
 
     const parsed = JSON.parse(saved);
-    if (!parsed || !Array.isArray(parsed.passes)) {
-      throw new Error("Saved pass data has an unexpected format.");
+    if (!parsed || !Array.isArray(parsed.passes) || !parsed.passes.every(isValidPass)) {
+      throw new Error("Saved pass data is invalid.");
     }
+    stateReady = true;
     return parsed;
   } catch (error) {
-    notice.textContent = `Could not load saved pass data: ${error.message}`;
+    stateReady = false;
+    notice.textContent = `${error.message} No changes will be saved, so existing data is not overwritten.`;
     return initialState;
   }
 }
@@ -34,6 +70,8 @@ function loadState() {
 let state = loadState();
 
 function saveState() {
+  if (!stateReady) return false;
+
   try {
     localStorage.setItem(storageKey, JSON.stringify(state));
     notice.textContent = "";
@@ -152,7 +190,7 @@ function renderTeacher() {
   [
     [pending.length, "Waiting for approval"],
     [out.length, "Currently out"],
-    [state.passes.filter((pass) => pass.status === "returned").length, "Back in class"],
+    [state.passes.filter((pass) => pass.status === "returned").length, "Returned passes"],
   ].forEach(([count, label]) => {
     const card = document.createElement("div");
     card.className = "stat-card";
